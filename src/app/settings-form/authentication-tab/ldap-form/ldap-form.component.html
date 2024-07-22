@@ -1,0 +1,116 @@
+<form [formGroup]="ldapAuthentication" class="mt-4">
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      id="enableLdap"
+      formControlName="enableLdap"
+    />
+    <label class="form-check-label" for="enableLdap"> Enable </label>
+  </div>
+  <div class="mb-3 w-25">
+    <label for="" class="form-label"
+      >host<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="host"
+      formControlName="host"
+      [class.error-border]="
+        ldapAuthentication.get('host')?.invalid &&
+        ldapAuthentication.get('host')?.touched
+      "
+    />
+    <div
+      class="label-error"
+      *ngIf="ldapAuthentication.get('host')?.errors?.['required'] && ldapAuthentication.get('host')?.touched"
+    >
+      Host is required.
+    </div>
+  </div>
+  <div class="mb-3 w-25">
+    <label for="" class="form-label"
+      >port<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="port"
+      formControlName="port"
+      [class.error-border]="
+        ldapAuthentication.get('port')?.invalid &&
+        ldapAuthentication.get('port')?.touched
+      "
+    />
+    <div
+      class="label-error"
+      *ngIf="ldapAuthentication.get('port')?.errors?.['required'] && ldapAuthentication.get('port')?.touched"
+    >
+      Port is required.
+    </div>
+  </div>
+  <div class="mb-3 w-25">
+    <label for="" class="form-label"
+      >base<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="base"
+      formControlName="base"
+      [class.error-border]="
+        ldapAuthentication.get('base')?.invalid &&
+        ldapAuthentication.get('base')?.touched
+      "
+    />
+    <div
+      class="label-error"
+      *ngIf="ldapAuthentication.get('base')?.errors?.['required'] && ldapAuthentication.get('base')?.touched"
+    >
+      Base is required.
+    </div>
+  </div>
+  <div class="mb-3 w-25">
+    <label for="" class="form-label"
+      >username<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      formControlName="username"
+      [class.error-border]="
+        ldapAuthentication.get('username')?.invalid &&
+        ldapAuthentication.get('username')?.touched
+      "
+    />
+    <div
+      class="label-error"
+      *ngIf="ldapAuthentication.get('username')?.errors?.['required'] && ldapAuthentication.get('username')?.touched"
+    >
+      Username is required.
+    </div>
+  </div>
+  <div class="mb-3 w-25">
+    <label for="" class="form-label"
+      >password<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+      [class.error-border]="
+        ldapAuthentication.get('password')?.invalid &&
+        ldapAuthentication.get('password')?.touched
+      "
+    />
+    <div
+      class="label-error"
+      *ngIf="ldapAuthentication.get('password')?.errors?.['required'] && ldapAuthentication.get('password')?.touched"
+    >
+      Password is required.
+    </div>
+  </div>
+</form>

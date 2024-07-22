@@ -1,0 +1,80 @@
+<form [formGroup]="languageForm">
+  <div class="mb-3 w-50 my-4">
+    <label for="available-languages" class="form-label">
+      Available languages<span class="text-danger fs-5">*</span>
+    </label>
+    <ng-select
+      [items]="languages"
+      [multiple]="true"
+      bindLabel="name"
+      bindValue="name"
+      formControlName="availableLanguages"
+      placeholder="Select languages"
+      [class.error-border]="
+        languageForm.get('availableLanguages')?.invalid &&
+        languageForm.get('availableLanguages')?.touched
+      "
+    >
+    </ng-select>
+    <div
+      class="label-error"
+      *ngIf="languageForm.get('availableLanguages')?.errors?.['required'] && languageForm.get('availableLanguages')?.touched"
+    >
+      Available languages is required.
+    </div>
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="primary-languages" class="form-label">
+      Primary languages<span class="text-danger fs-5">*</span>
+    </label>
+    <select
+      class="form-select form-select-md"
+      name="primary-languages"
+      id="primary-languages"
+      formControlName="primaryLanguage"
+      [class.error-border]="
+        languageForm.get('primaryLanguage')?.invalid &&
+        languageForm.get('primaryLanguage')?.touched
+      "
+    >
+      <option value="English">English</option>
+      <option value="Arabic">Arabic</option>
+    </select>
+    <div
+      class="label-error"
+      *ngIf="languageForm.get('primaryLanguage')?.errors?.['required'] && languageForm.get('primaryLanguage')?.touched"
+    >
+      Primary language is required.
+    </div>
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="secondary-languages" class="form-label">
+      Secondary languages<span class="text-danger fs-5">*</span>
+    </label>
+    <select
+      class="form-select form-select-md"
+      name="secondary-languages"
+      id="secondary-languages"
+      formControlName="secondaryLanguage"
+      [class.error-border]="
+        languageForm.get('secondaryLanguage')?.value === '' &&
+        languageForm.get('secondaryLanguage')?.touched
+      "
+    >
+      <option value="" disabled selected>Select language</option>
+      <option value="English">English</option>
+      <option value="Arabic">Arabic</option>
+    </select>
+    <div
+      class="label-error"
+      *ngIf="
+        languageForm.get('secondaryLanguage')?.value === '' &&
+        languageForm.get('secondaryLanguage')?.touched
+      "
+    >
+      Secondary language is required.
+    </div>
+  </div>
+</form>

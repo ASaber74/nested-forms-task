@@ -1,0 +1,263 @@
+<form [formGroup]="basicAuthentication" class="mt-4">
+  <div class="mb-3">
+    <div class="row row-cols-2">
+      <div class="col">
+        <label for="blockAfter" class="form-label">Block The user After</label>
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="number"
+            class="form-control w-50"
+            name="blockAfter"
+            id="blockAfter"
+            aria-describedby="blockAfter"
+            formControlName="blockAfterFailedAttempts"
+          />
+          <small id="blockAfter" class="form-text text-muted"
+            >Failed Attempts</small
+          >
+        </div>
+      </div>
+      <div class="col">
+        <label for="repeatAfter" class="form-label"
+          >Accept Repeating Password After</label
+        >
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="number"
+            class="form-control w-50"
+            name="repeatAfter"
+            id="repeatAfter"
+            aria-describedby="repeatAfter"
+            formControlName="acceptRepeatingPasswordAfter"
+          />
+          <small id="repeatAfter" class="form-text text-muted">Times</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="row row-cols-2">
+      <div class="col">
+        <label for="minChars" class="form-label">Password Minimum Length</label>
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="number"
+            class="form-control w-50"
+            name="minChars"
+            id="minChars"
+            aria-describedby="minChars"
+            formControlName="passwordMinLength"
+          />
+          <small id="minChars" class="form-text text-muted">Characters</small>
+        </div>
+      </div>
+      <div class="col">
+        <label for="maxChars" class="form-label">Password Maximum Length</label>
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="number"
+            class="form-control w-50"
+            name="maxChars"
+            id="maxChars"
+            aria-describedby="maxChars"
+            formControlName="passwordMaxLength"
+          />
+          <small id="maxChars" class="form-text text-muted">Characters</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="row row-cols-2">
+      <div class="col">
+        <label for="expiresAfter" class="form-label"
+          >Password Expires After</label
+        >
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="number"
+            class="form-control w-50"
+            name="expiresAfter"
+            id="expiresAfter"
+            aria-describedby="expiresAfter"
+            formControlName="passwordExpiresAfter"
+          />
+          <small id="expiresAfter" class="form-text text-muted">Days</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column gap-1">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="shouldContainDigits"
+        formControlName="shouldContainDigits"
+      />
+      <label class="form-check-label" for="shouldContainDigits">
+        Should Contain Digits
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="shouldContainCharacters"
+        formControlName="shouldContainCharacters"
+      />
+      <label class="form-check-label" for="shouldContainCharacters">
+        Should Contain Characters
+      </label>
+    </div>
+    <div class="w-50 py-2">
+      <select
+        class="form-select form-select-md"
+        formControlName="characterType"
+      >
+        <option value="any">Any</option>
+        <option value="lower">Lower Case</option>
+        <option value="upper">Upper Case</option>
+        <option value="both">Both</option>
+      </select>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="shouldContainSpecialCharacters"
+        formControlName="shouldContainSpecialCharacters"
+      />
+      <label class="form-check-label" for="shouldContainSpecialCharacters">
+        Should Contain Special Characters
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="preventWhiteSpace"
+        formControlName="preventWhiteSpace"
+      />
+      <label class="form-check-label" for="preventWhiteSpace">
+        Prevent White Space
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="preventKeyboardSequence"
+        formControlName="preventKeyboardSequence"
+      />
+      <label class="form-check-label" for="preventKeyboardSequence">
+        Prevent Keyboard Sequence (Ex: Qwerty)
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="preventLoginID"
+        formControlName="preventLoginID"
+      />
+      <label class="form-check-label" for="preventLoginID">
+        Prevent Login ID
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="preventUserName"
+        formControlName="preventUserName"
+      />
+      <label class="form-check-label" for="preventUserName">
+        Prevent Users Name
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="preventEmail"
+        formControlName="preventEmail"
+      />
+      <label class="form-check-label" for="preventEmail"> Prevent Email </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="validateSequence"
+        formControlName="validateSequence"
+      />
+      <label class="form-check-label" for="validateSequence">
+        Validate Sequence (Ex: Abcd)
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="validateRepeatedCharacter"
+        formControlName="validateRepeatedCharacter"
+      />
+      <label class="form-check-label" for="validateRepeatedCharacter">
+        Validate Repeated Character (Ex: Aaa, 111)
+      </label>
+    </div>
+  </div>
+
+  <div class="mb-3 mt-4">
+    <div class="row row-cols-2">
+      <div class="col">
+        <label for="minPasswordLength" class="form-label"
+          >Password Minimum Length</label
+        >
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="text"
+            class="form-control w-50"
+            name="minPasswordLength"
+            id="minPasswordLength"
+            aria-describedby="minPasswordLength"
+            formControlName="passwordMinLength"
+          />
+          <small id="minPasswordLength" class="form-text text-muted"
+            >Characters</small
+          >
+        </div>
+      </div>
+      <div class="col">
+        <label for="preventSequenceWithLengthOf" class="form-label"
+          >Prevent Sequence With LengthOf</label
+        >
+        <div class="d-flex gap-3 align-items-center">
+          <input
+            type="text"
+            class="form-control w-50"
+            name="preventSequenceWithLengthOf"
+            id="preventSequenceWithLengthOf"
+            aria-describedby="preventSequenceWithLengthOf"
+            formControlName="preventSequenceWithLengthOf"
+          />
+          <small id="preventSequenceWithLengthOf" class="form-text text-muted"
+            >Times in Sqeuence</small
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

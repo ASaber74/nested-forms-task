@@ -1,0 +1,7 @@
+.nav-tabs .nav-link {
+  color: #687189;
+}
+.nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: 4px solid #5d6e83;
+}

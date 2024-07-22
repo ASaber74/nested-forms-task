@@ -1,0 +1,93 @@
+<form [formGroup]="smsCommunication" class="mt-4">
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="smsType"
+      id="standard"
+      value="Standard"
+      formControlName="smsType"
+    />
+    <label class="form-check-label" for="standard"> Standard </label>
+  </div>
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="smsType"
+      id="custom"
+      value="Custom"
+      formControlName="smsType"
+    />
+    <label class="form-check-label" for="custom"> Custom </label>
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="npi" class="form-label"
+      >NPI<span class="text-danger fs-5">*</span></label
+    >
+    <input type="text" class="form-control" id="npi" formControlName="npi" />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="ton" class="form-label"
+      >TON<span class="text-danger fs-5">*</span></label
+    >
+    <input type="text" class="form-control" id="ton" formControlName="ton" />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="sourceAddress" class="form-label"
+      >sourceAddress<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="sourceAddress"
+      formControlName="sourceAddress"
+    />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="hostIp" class="form-label"
+      >host IP<span class="text-danger fs-5">*</span></label
+    >
+    <input type="text" class="form-control" id="hostIp" formControlName="hostIp" />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="smsPort" class="form-label"
+      >Port<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="smsPort"
+      formControlName="smsPort"
+    />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="smsUsername" class="form-label"
+      >Username<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="smsUsername"
+      formControlName="smsUsername"
+    />
+  </div>
+
+  <div class="mb-3 w-25">
+    <label for="smsPassword" class="form-label"
+      >Password<span class="text-danger fs-5">*</span></label
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="smsPassword"
+      formControlName="smsPassword"
+    />
+  </div>
+</form>
