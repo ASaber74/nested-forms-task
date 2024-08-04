@@ -16,6 +16,8 @@ import { CommunicationTabComponent } from './settings-form/communication-tab/com
 import { MailFormComponent } from './settings-form/communication-tab/mail-form/mail-form.component';
 import { SmsFormComponent } from './settings-form/communication-tab/sms-form/sms-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { GlobalFormComponent } from './settings-form/authentication-tab/global-form/global-form.component';
+import { SkinFormComponent } from './settings-form/skin-form/skin-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CommunicationTabComponent,
     MailFormComponent,
     SmsFormComponent,
+    GlobalFormComponent,
+    SkinFormComponent,
   ],
   imports: [
     BrowserModule,

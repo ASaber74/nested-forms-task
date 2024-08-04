@@ -27,6 +27,20 @@
       Ldap
     </button>
   </li>
+  <li class="nav-item" role="presentation">
+    <button
+      class="nav-link"
+      id="globalAuthentication-tab"
+      data-bs-toggle="tab"
+      data-bs-target="#globalAuthentication"
+      type="button"
+      role="tab"
+      aria-controls="globalAuthentication"
+      aria-selected="false"
+    >
+      Global
+    </button>
+  </li>
 </ul>
 
 <div class="tab-content">
@@ -45,5 +59,13 @@
     aria-labelledby="ldapAuthentication-tab"
   >
     <app-ldap-form />
+  </div>
+  <div
+    class="tab-pane"
+    id="globalAuthentication"
+    role="tabpanel"
+    aria-labelledby="globalAuthentication-tab"
+  >
+    <app-global-form />
   </div>
 </div>
