@@ -50,6 +50,23 @@ ngx-dropzone {
   padding: 0;
 }
 
+.data-align {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.flag {
+  width: 25px;
+  opacity: 0.5;
+  margin-left: 0.5rem;
+  cursor: pointer;
+
+}
+
+.flag.active {
+  opacity: 1;
+}
+
 /* .upload-icon {
   display: flex;
   align-items: center;

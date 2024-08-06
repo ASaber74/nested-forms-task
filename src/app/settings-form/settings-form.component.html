@@ -1,9 +1,19 @@
-<div class="container mt-4">
+<div class="container my-4">
   <form [formGroup]="settingsForm" (ngSubmit)="onSave(settingsForm)">
     <app-main-nav></app-main-nav>
     <div class="ms-auto d-flex gap-2 justify-content-end mt-4">
-      <button type="submit" class="btn btn-success btn-sm px-5" [disabled]="settingsForm.invalid">Save</button>
-      <button type="button" class="btn btn-secondary btn-sm px-5" (click)="onCancel()">
+      <button
+        type="submit"
+        class="btn btn-success btn-sm px-5"
+        [disabled]="settingsForm.invalid"
+      >
+        Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-sm px-5"
+        (click)="onCancel()"
+      >
         Cancel
       </button>
     </div>

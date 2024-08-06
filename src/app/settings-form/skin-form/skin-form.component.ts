@@ -7,6 +7,8 @@ import {
   NG_VALIDATORS,
   NG_VALUE_ACCESSOR,
   Validators,
+  FormControl,
+  AbstractControl,
 } from '@angular/forms';
 
 @Component({
@@ -28,6 +30,7 @@ import {
 })
 export class SkinFormComponent implements OnInit {
   skinForm!: FormGroup;
+  isEnglish: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -61,7 +64,10 @@ export class SkinFormComponent implements OnInit {
       disabledFrom: [null],
       disabledTo: [null],
       themeId: [null],
-      names: ['Light Skin', Validators.required],
+      names: this.fb.group({
+        en: ['Light Skin', Validators.required],
+        ar: ['Test', Validators.required],
+      }),
       fileContent: [null],
       fileName: ['Light-theme (1).css', Validators.required],
       fileNameMobile: [null],
@@ -83,11 +89,15 @@ export class SkinFormComponent implements OnInit {
     this.assets.removeAt(index);
   }
 
-  async onFilesAdded(files: File[], index: number, fieldName: 'cssFile' | 'jsonMobileFile'): Promise<void> {
+  async onFilesAdded(
+    files: File[],
+    index: number,
+    fieldName: 'cssFile' | 'jsonMobileFile'
+  ): Promise<void> {
     if (files.length > 0) {
       const file = files[0];
       const fileContent = await this.readFileContent(file);
-      
+
       if (fieldName === 'cssFile') {
         this.assets.at(index).get('fileName')?.setValue(file.name);
         this.assets.at(index).get('fileContent')?.setValue(fileContent);
@@ -105,5 +115,17 @@ export class SkinFormComponent implements OnInit {
       reader.onerror = () => reject(reader.error);
       reader.readAsText(file);
     });
+  }
+
+  onChangeLanguage() {
+    this.isEnglish = !this.isEnglish;
+  }
+
+  getNameControl(skinGroup: AbstractControl, isEnglish: boolean): FormControl {
+    const controlGroup = skinGroup as FormGroup;
+    const control = isEnglish
+      ? controlGroup.get('names.en')
+      : controlGroup.get('names.ar');
+    return control as FormControl;
   }
 }
