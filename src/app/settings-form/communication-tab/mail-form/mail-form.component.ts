@@ -55,6 +55,7 @@ export class MailFormComponent implements OnInit {
         Validators.required,
       ],
     });
+
     const parentForm = this.controlContainer.control as FormGroup;
     const communicationSettings = parentForm.get(
       'communicationSettings'
@@ -79,20 +80,23 @@ export class MailFormComponent implements OnInit {
           this.mailCommunication.get('serverPassword')?.disable();
         }
       });
-      this.originalPassword = this.mailCommunication.get('password')?.value;
 
+    this.originalPassword = this.mailCommunication.get('serverPassword')?.value;
   }
 
   onEditPassword() {
     this.isPasswordEditing = true;
+    this.mailCommunication.get('serverPassword')?.enable();
   }
 
   onSavePassword() {
     this.isPasswordEditing = false;
+    this.mailCommunication.get('serverPassword')?.disable();
   }
 
   onCancelEdit() {
-    this.mailCommunication.get('password')?.setValue(this.originalPassword);
+    this.mailCommunication.get('serverPassword')?.setValue(this.originalPassword);
     this.isPasswordEditing = false;
+    this.mailCommunication.get('serverPassword')?.disable();
   }
 }

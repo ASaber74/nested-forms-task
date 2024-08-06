@@ -82,6 +82,5 @@ export class LdapFormComponent implements OnInit {
   onCancelEdit() {
     this.ldapAuthentication.get('password')?.setValue(this.originalPassword);
     this.isPasswordEditing = false;
-    this.ldapAuthentication.get('password')?.disable();
   }
 }
