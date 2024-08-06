@@ -1,1 +1,86 @@
-<p>skin-form works!</p>
+<div class="mt-4">
+  <button
+    type="button"
+    class="btn btn-success btn-sm py-2 px-3 ms-auto d-block"
+    (click)="addSkin()"
+  >
+    Add New Skin
+  </button>
+</div>
+
+<form [formGroup]="skinForm" class="mt-2">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name <span class="text-danger">*</span></th>
+        <th>CSS File <span class="text-danger">*</span></th>
+        <th>JSON Mobile File</th>
+        <th>Body Main Class <span class="text-danger">*</span></th>
+        <th class="text-center">Delete</th>
+      </tr>
+    </thead>
+    <tbody formArrayName="assets">
+      <tr
+        *ngFor="let skin of assets.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <td>
+          <input formControlName="names" class="form-control" />
+        </td>
+        <td>
+          <div class="file-upload">
+            <input
+              type="file"
+              id="cssFile{{ i }}"
+              (change)="onFileChange($event, i, 'cssFile')"
+              class="file-input"
+            />
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center gap-2 w-100 h-100 mt-2 pe-1"
+          >
+            <i class="fa-solid fa-upload d-block order-2 cursor-pointer"></i>
+            <label for="cssFile{{ i }}" class="upload-icon order-1">
+              <span *ngIf="fileNames[i]?.cssFile">{{
+                fileNames[i]!.cssFile
+              }}</span>
+            </label>
+          </div>
+        </td>
+
+        <td>
+          <div class="file-upload">
+            <input
+              type="file"
+              id="jsonMobileFile{{ i }}"
+              (change)="onFileChange($event, i, 'jsonMobileFile')"
+              class="file-input"
+            />
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center gap-2 w-100 h-100 mt-2 pe-1"
+          >
+            <i class="fa-solid fa-upload d-block order-2 cursor-pointer"></i>
+            <label for="jsonMobileFile{{ i }}" class="upload-icon order-1">
+              <span *ngIf="fileNames[i]?.jsonMobileFile">{{
+                fileNames[i]!.jsonMobileFile
+              }}</span>
+            </label>
+          </div>
+        </td>
+        <td>
+          <input formControlName="bodyMainClass" class="form-control" />
+        </td>
+        <td>
+          <button
+            type="button"
+            (click)="deleteSkin(i)"
+            class="btn btn-xxl mx-auto d-block"
+          >
+            <i class="fa-regular fa-circle-xmark fs-4"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>

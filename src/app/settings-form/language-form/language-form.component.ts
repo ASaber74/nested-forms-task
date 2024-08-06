@@ -43,5 +43,14 @@ export class LanguageFormComponent implements OnInit {
     });
     const parentForm = this.controlContainer.control as FormGroup;
     parentForm.addControl('languageSettings', this.languageForm);
+
+    this.languageForm.get('availableLanguages')?.valueChanges.subscribe((value) => {
+      this.onAvailableLanguagesChange();
+    });
   }
+
+  onAvailableLanguagesChange(): void {
+    const availableLanguages = this.languageForm.get('availableLanguages')?.value || [];
+    this.selectedLanguages = availableLanguages;
   }
+}

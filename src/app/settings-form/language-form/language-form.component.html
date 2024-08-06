@@ -14,6 +14,7 @@
         languageForm.get('availableLanguages')?.invalid &&
         languageForm.get('availableLanguages')?.touched
       "
+      (change)="onAvailableLanguagesChange()"
     >
     </ng-select>
     <div
@@ -38,8 +39,9 @@
         languageForm.get('primaryLanguage')?.touched
       "
     >
-      <option value="English">English</option>
-      <option value="Arabic">Arabic</option>
+      <option *ngFor="let language of selectedLanguages" [value]="language">
+        {{ language }}
+      </option>
     </select>
     <div
       class="label-error"
@@ -64,8 +66,9 @@
       "
     >
       <option value="" disabled selected>Select language</option>
-      <option value="English">English</option>
-      <option value="Arabic">Arabic</option>
+      <option *ngFor="let language of selectedLanguages" [value]="language">
+        {{ language }}
+      </option>
     </select>
     <div
       class="label-error"

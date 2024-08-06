@@ -52,7 +52,12 @@
     <label for="hostIp" class="form-label"
       >host IP<span class="text-danger fs-5">*</span></label
     >
-    <input type="text" class="form-control" id="hostIp" formControlName="hostIp" />
+    <input
+      type="text"
+      class="form-control"
+      id="hostIp"
+      formControlName="hostIp"
+    />
   </div>
 
   <div class="mb-3 w-25">
@@ -83,11 +88,28 @@
     <label for="smsPassword" class="form-label"
       >Password<span class="text-danger fs-5">*</span></label
     >
-    <input
-      type="password"
-      class="form-control"
-      id="smsPassword"
-      formControlName="smsPassword"
-    />
+    <div class="d-flex gap-3 justify-content-between align-items-center">
+      <input
+        type="password"
+        class="form-control"
+        id="smsPassword"
+        formControlName="smsPassword"
+      />
+      <i
+        class="fa-solid fa-pen fs-9 cursor-pointer"
+        *ngIf="!isPasswordEditing"
+        (click)="onEditPassword()"
+      ></i>
+      <div
+        class="d-flex gap-1 align-items-center justify-content-between cursor-pointer"
+        *ngIf="isPasswordEditing"
+      >
+        <i class="fa-solid fa-xmark text-danger" (click)="onCancelEdit()"></i>
+        <i
+          class="fa-solid fa-check text-success"
+          (click)="onSavePassword()"
+        ></i>
+      </div>
+    </div>
   </div>
 </form>

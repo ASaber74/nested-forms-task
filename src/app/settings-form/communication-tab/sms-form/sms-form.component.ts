@@ -27,6 +27,8 @@ import {
 })
 export class SmsFormComponent implements OnInit {
   smsCommunication!: FormGroup;
+  isPasswordEditing: boolean = false;
+  originalPassword!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -47,10 +49,23 @@ export class SmsFormComponent implements OnInit {
 
     const parentForm = this.controlContainer.control as FormGroup;
 
-    // parentForm.addControl('smsCommunication', this.smsCommunication);
     const communicationSettings = parentForm.get(
       'communicationSettings'
     ) as FormGroup;
     communicationSettings.addControl('smsCommunication', this.smsCommunication);
+
+    this.originalPassword = this.smsCommunication.get('password')?.value;
+  }
+  onEditPassword() {
+    this.isPasswordEditing = true;
+  }
+
+  onSavePassword() {
+    this.isPasswordEditing = false;
+  }
+
+  onCancelEdit() {
+    this.smsCommunication.get('password')?.setValue(this.originalPassword);
+    this.isPasswordEditing = false;
   }
 }

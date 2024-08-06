@@ -27,6 +27,8 @@ import {
 })
 export class MailFormComponent implements OnInit {
   mailCommunication!: FormGroup;
+  isPasswordEditing: boolean = false;
+  originalPassword!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -54,23 +56,43 @@ export class MailFormComponent implements OnInit {
       ],
     });
     const parentForm = this.controlContainer.control as FormGroup;
-    // parentForm.addControl('mailCommunication', this.mailCommunication);
-    const communicationSettings = parentForm.get('communicationSettings') as FormGroup;
-    communicationSettings.addControl('mailCommunication', this.mailCommunication);
+    const communicationSettings = parentForm.get(
+      'communicationSettings'
+    ) as FormGroup;
+    communicationSettings.addControl(
+      'mailCommunication',
+      this.mailCommunication
+    );
 
-    this.mailCommunication.get('serverType')?.valueChanges.subscribe((value) => {
-      if (value === 'Custom') {
-        this.mailCommunication.get('smtpServer')?.enable();
-        this.mailCommunication.get('outgoingPort')?.enable();
-        this.mailCommunication.get('serverUsername')?.enable();
-        this.mailCommunication.get('serverPassword')?.enable();
-      } else {
-        this.mailCommunication.get('smtpServer')?.disable();
-        this.mailCommunication.get('outgoingPort')?.disable();
-        this.mailCommunication.get('serverUsername')?.disable();
-        this.mailCommunication.get('serverPassword')?.disable();
-      }
-    });
+    this.mailCommunication
+      .get('serverType')
+      ?.valueChanges.subscribe((value) => {
+        if (value === 'Custom') {
+          this.mailCommunication.get('smtpServer')?.enable();
+          this.mailCommunication.get('outgoingPort')?.enable();
+          this.mailCommunication.get('serverUsername')?.enable();
+          this.mailCommunication.get('serverPassword')?.enable();
+        } else {
+          this.mailCommunication.get('smtpServer')?.disable();
+          this.mailCommunication.get('outgoingPort')?.disable();
+          this.mailCommunication.get('serverUsername')?.disable();
+          this.mailCommunication.get('serverPassword')?.disable();
+        }
+      });
+      this.originalPassword = this.mailCommunication.get('password')?.value;
 
+  }
+
+  onEditPassword() {
+    this.isPasswordEditing = true;
+  }
+
+  onSavePassword() {
+    this.isPasswordEditing = false;
+  }
+
+  onCancelEdit() {
+    this.mailCommunication.get('password')?.setValue(this.originalPassword);
+    this.isPasswordEditing = false;
   }
 }

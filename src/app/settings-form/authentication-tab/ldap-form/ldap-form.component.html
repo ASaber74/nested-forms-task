@@ -9,8 +9,8 @@
     <label class="form-check-label" for="enableLdap"> Enable </label>
   </div>
   <div class="mb-3 w-25">
-    <label for="" class="form-label"
-      >host<span class="text-danger fs-5">*</span></label
+    <label for="host" class="form-label"
+      >Host<span class="text-danger fs-5">*</span></label
     >
     <input
       type="text"
@@ -30,8 +30,8 @@
     </div>
   </div>
   <div class="mb-3 w-25">
-    <label for="" class="form-label"
-      >port<span class="text-danger fs-5">*</span></label
+    <label for="port" class="form-label"
+      >Port<span class="text-danger fs-5">*</span></label
     >
     <input
       type="text"
@@ -51,8 +51,8 @@
     </div>
   </div>
   <div class="mb-3 w-25">
-    <label for="" class="form-label"
-      >base<span class="text-danger fs-5">*</span></label
+    <label for="base" class="form-label"
+      >Base<span class="text-danger fs-5">*</span></label
     >
     <input
       type="text"
@@ -72,8 +72,8 @@
     </div>
   </div>
   <div class="mb-3 w-25">
-    <label for="" class="form-label"
-      >username<span class="text-danger fs-5">*</span></label
+    <label for="username" class="form-label"
+      >Username<span class="text-danger fs-5">*</span></label
     >
     <input
       type="text"
@@ -93,19 +93,34 @@
     </div>
   </div>
   <div class="mb-3 w-25">
-    <label for="" class="form-label"
-      >password<span class="text-danger fs-5">*</span></label
+    <label for="password" class="form-label"
+      >Password<span class="text-danger fs-5">*</span></label
     >
-    <input
-      type="password"
-      class="form-control"
-      id="password"
-      formControlName="password"
-      [class.error-border]="
-        ldapAuthentication.get('password')?.invalid &&
-        ldapAuthentication.get('password')?.touched
-      "
-    />
+    <div class="d-flex gap-3 justify-content-between align-items-center">
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        [class.error-border]="
+          ldapAuthentication.get('password')?.invalid &&
+          ldapAuthentication.get('password')?.touched
+        "
+      />
+      <i
+        class="fa-solid fa-pen fs-9 cursor-pointer"
+        *ngIf="!isPasswordEditing"
+        [class.disabled]="!ldapAuthentication.get('enableLdap')?.value"
+        (click)="ldapAuthentication.get('enableLdap')?.value && onEditPassword()"
+      ></i>
+      <div
+        class="d-flex gap-1 align-items-center justify-content-between cursor-pointer"
+        *ngIf="isPasswordEditing"
+      >
+        <i class="fa-solid fa-xmark text-danger" (click)="onCancelEdit()"></i>
+        <i class="fa-solid fa-check text-success" (click)="onSavePassword()"></i>
+      </div>
+    </div>
     <div
       class="label-error"
       *ngIf="ldapAuthentication.get('password')?.errors?.['required'] && ldapAuthentication.get('password')?.touched"

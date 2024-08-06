@@ -6,3 +6,12 @@
   color: red;
   font-weight: 700px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}

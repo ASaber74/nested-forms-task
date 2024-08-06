@@ -27,6 +27,8 @@ import {
 })
 export class LdapFormComponent implements OnInit {
   ldapAuthentication!: FormGroup;
+  isPasswordEditing: boolean = false;
+  originalPassword!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -40,11 +42,10 @@ export class LdapFormComponent implements OnInit {
       port: [{ value: '', disabled: true }, Validators.required],
       base: [{ value: '', disabled: true }, Validators.required],
       username: [{ value: '', disabled: true }, Validators.required],
-      password: [{ value: '', disabled: true }, Validators.required],
+      password: [{ value: 'P@ssw0rd', disabled: true }, Validators.required],
     });
 
     const parentForm = this.controlContainer.control as FormGroup;
-
     const authSettings = parentForm.get('authSettings') as FormGroup;
     authSettings.addControl('ldapAuthentication', this.ldapAuthentication);
 
@@ -56,7 +57,6 @@ export class LdapFormComponent implements OnInit {
           this.ldapAuthentication.get('port')?.enable();
           this.ldapAuthentication.get('base')?.enable();
           this.ldapAuthentication.get('username')?.enable();
-          this.ldapAuthentication.get('password')?.enable();
         } else {
           this.ldapAuthentication.get('host')?.disable();
           this.ldapAuthentication.get('port')?.disable();
@@ -65,5 +65,23 @@ export class LdapFormComponent implements OnInit {
           this.ldapAuthentication.get('password')?.disable();
         }
       });
+
+    this.originalPassword = this.ldapAuthentication.get('password')?.value;
+  }
+
+  onEditPassword() {
+    this.isPasswordEditing = true;
+    this.ldapAuthentication.get('password')?.enable();
+  }
+
+  onSavePassword() {
+    this.isPasswordEditing = false;
+    this.ldapAuthentication.get('password')?.disable();
+  }
+
+  onCancelEdit() {
+    this.ldapAuthentication.get('password')?.setValue(this.originalPassword);
+    this.isPasswordEditing = false;
+    this.ldapAuthentication.get('password')?.disable();
   }
 }

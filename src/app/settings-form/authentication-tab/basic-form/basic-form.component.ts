@@ -40,7 +40,7 @@ export class BasicFormComponent implements OnInit {
       passwordMaxLength: [20, Validators.required],
       passwordExpiresAfter: [90, Validators.required],
       shouldContainDigits: [true],
-      shouldContainCharacters: [true],
+      shouldContainCharacters: [false],
       characterType: [{ value: '', disabled: true }],
       shouldContainSpecialCharacters: [false],
       preventWhiteSpace: [true],
