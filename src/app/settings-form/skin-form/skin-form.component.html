@@ -26,47 +26,60 @@
       >
         <td>
           <input formControlName="names" class="form-control" />
-        </td>
-        <td>
-          <div class="file-upload">
-            <input
-              type="file"
-              id="cssFile{{ i }}"
-              (change)="onFileChange($event, i, 'cssFile')"
-              class="file-input"
-            />
-          </div>
-          <div
-            class="d-flex justify-content-between align-items-center gap-2 w-100 h-100 mt-2 pe-1"
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1235 650"
+            width="30"
+            height="auto"
           >
-            <i class="fa-solid fa-upload d-block order-2 cursor-pointer"></i>
-            <label for="cssFile{{ i }}" class="upload-icon order-1">
-              <span *ngIf="fileNames[i]?.cssFile">{{
-                fileNames[i]!.cssFile
-              }}</span>
-            </label>
-          </div>
+            <g fill="none" fill-rule="evenodd">
+              <path fill="#B22234" d="M0 0h1235v650H0z" />
+              <path
+                fill="#FFF"
+                d="M0 0h1235v49.2H0zM0 98.4h1235v49.2H0zM0 196.8h1235v49.2H0zM0 295.2h1235v49.2H0zM0 393.6h1235v49.2H0zM0 492h1235v49.2H0zM0 590.4h1235v49.2H0z"
+              />
+              <path fill="#3C3B6E" d="M0 0h494.3v345.6H0z" />
+              <path
+                fill="#FFF"
+                d="M35.1 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM117.5 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM199.9 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM282.3 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM364.7 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM447.1 42.6l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM71.3 97.5l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM153.7 97.5l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM236.1 97.5l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM318.5 97.5l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM400.9 97.5l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM117.5 152.4l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM199.9 152.4l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM282.3 152.4l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM364.7 152.4l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM71.3 207.3l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM153.7 207.3l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM236.1 207.3l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM318.5 207.3l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM400.9 207.3l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM153.7 262.2l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM236.1 262.2l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7zM318.5 262.2l9.6 29.4h30.7l-24.9 18.1 9.6 29.4-24.9-18.1-24.9 18.1 9.6-29.4-24.9-18.1h30.7z"
+              />
+            </g>
+          </svg>
         </td>
 
         <td>
-          <div class="file-upload">
-            <input
-              type="file"
-              id="jsonMobileFile{{ i }}"
-              (change)="onFileChange($event, i, 'jsonMobileFile')"
-              class="file-input"
-            />
-          </div>
-          <div
-            class="d-flex justify-content-between align-items-center gap-2 w-100 h-100 mt-2 pe-1"
+          <ngx-dropzone
+            accept=".css"
+            (change)="onFilesAdded($event.addedFiles, i, 'cssFile')"
           >
-            <i class="fa-solid fa-upload d-block order-2 cursor-pointer"></i>
-            <label for="jsonMobileFile{{ i }}" class="upload-icon order-1">
-              <span *ngIf="fileNames[i]?.jsonMobileFile">{{
-                fileNames[i]!.jsonMobileFile
-              }}</span>
-            </label>
-          </div>
+            <ngx-dropzone-label
+              class="d-flex justify-content-center align-items-center"
+            >
+              <i class="fa-solid fa-upload ms-auto d-block order-2"></i>
+              <span
+                *ngIf="assets.at(i).get('fileName')?.value"
+                class="order-1"
+                >{{ assets.at(i).get("fileName")?.value }}</span
+              >
+            </ngx-dropzone-label>
+          </ngx-dropzone>
+        </td>
+        <td>
+          <ngx-dropzone
+            accept=".json"
+            (change)="onFilesAdded($event.addedFiles, i, 'jsonMobileFile')"
+          >
+            <ngx-dropzone-label
+              class="d-flex justify-content-center align-items-center"
+            >
+              <i class="fa-solid fa-upload ms-auto d-block order-2"></i>
+              <span
+                *ngIf="assets.at(i).get('fileNameMobile')?.value"
+                class="order-1"
+                >{{ assets.at(i).get("fileNameMobile")?.value }}</span
+              >
+            </ngx-dropzone-label>
+          </ngx-dropzone>
         </td>
         <td>
           <input formControlName="bodyMainClass" class="form-control" />

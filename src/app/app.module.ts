@@ -18,6 +18,7 @@ import { SmsFormComponent } from './settings-form/communication-tab/sms-form/sms
 import { NgSelectModule } from '@ng-select/ng-select';
 import { GlobalFormComponent } from './settings-form/authentication-tab/global-form/global-form.component';
 import { SkinFormComponent } from './settings-form/skin-form/skin-form.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { SkinFormComponent } from './settings-form/skin-form/skin-form.component
     ReactiveFormsModule,
     NgSelectModule,
     FormsModule,
+    NgxDropzoneModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

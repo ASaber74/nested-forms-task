@@ -3,7 +3,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 8px;
 }
@@ -12,34 +13,48 @@ th {
   background-color: #f2f2f2;
 }
 
-.file-upload {
-  position: relative;
-  display: flex;
-  align-items: center;
-
+.cursor-pointer {
+  cursor: pointer !important;
 }
 
-.file-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  opacity: 0;
+ngx-dropzone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: default !important;
+}
+
+ngx-dropzone-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+ngx-dropzone-label i {
   cursor: pointer;
 }
 
-.cursor-pointer{
-  cursor: pointer  !important;
+.fa-upload {
+  font-size: 20px;
 }
 
+ngx-dropzone {
+  border: none;
+  padding: 0;
+}
 
 /* .upload-icon {
   display: flex;
   align-items: center;
   cursor: pointer;
 } */
-
 
 /* .upload-icon span {
   font-size: 14px;

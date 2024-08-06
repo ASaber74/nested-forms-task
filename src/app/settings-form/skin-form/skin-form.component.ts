@@ -28,7 +28,6 @@ import {
 })
 export class SkinFormComponent implements OnInit {
   skinForm!: FormGroup;
-  fileNames: { [index: number]: { cssFile?: string; jsonMobileFile?: string } } = {};
 
   constructor(
     private fb: FormBuilder,
@@ -52,7 +51,7 @@ export class SkinFormComponent implements OnInit {
 
   addSkin(): void {
     const skinGroup = this.fb.group({
-      id: [null],  
+      id: [null],
       replyCode: [200, Validators.required],
       replyMessage: ['message.success', Validators.required],
       payloadList: [null],
@@ -78,21 +77,33 @@ export class SkinFormComponent implements OnInit {
     });
 
     this.assets.push(skinGroup);
-    this.fileNames[this.assets.length - 1] = {}; // Initialize fileNames for the new skin
   }
 
   deleteSkin(index: number): void {
     this.assets.removeAt(index);
-    delete this.fileNames[index]; // Remove fileNames for the deleted skin
   }
 
-  onFileChange(event: Event, index: number, fieldName: 'cssFile' | 'jsonMobileFile'): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      this.fileNames[index] = this.fileNames[index] || {};
-      this.fileNames[index][fieldName] = file.name;
-      this.assets.at(index).get(fieldName)?.setValue(file); // Store the file in the form control if needed
+  async onFilesAdded(files: File[], index: number, fieldName: 'cssFile' | 'jsonMobileFile'): Promise<void> {
+    if (files.length > 0) {
+      const file = files[0];
+      const fileContent = await this.readFileContent(file);
+      
+      if (fieldName === 'cssFile') {
+        this.assets.at(index).get('fileName')?.setValue(file.name);
+        this.assets.at(index).get('fileContent')?.setValue(fileContent);
+      } else if (fieldName === 'jsonMobileFile') {
+        this.assets.at(index).get('fileNameMobile')?.setValue(file.name);
+        this.assets.at(index).get('fileContentMobile')?.setValue(fileContent);
+      }
     }
+  }
+
+  private readFileContent(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = () => reject(reader.error);
+      reader.readAsText(file);
+    });
   }
 }
